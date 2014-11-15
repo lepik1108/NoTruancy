@@ -6,6 +6,7 @@ import db_connect
 import sql_queries
 xlLeft, xlRight, xlCenter = -4131, -4152, -4108
 
+print((sql_queries.groups_query()))
 
 def generate_empty_tables(n_week=calc_week.get_n_week(), week=calc_week.get_week(), con=db_connect.connect(),
                           group_name=sql_queries.groups_query()['group_name'],
@@ -147,6 +148,6 @@ def generate_empty_tables(n_week=calc_week.get_n_week(), week=calc_week.get_week
     attachment = ('%s_%s_%s.xls'%(group_name, course, spec_name))
     return attachment
 
-generate_empty_tables()
+#generate_empty_tables()
 
 
