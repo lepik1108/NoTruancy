@@ -2,13 +2,15 @@ __author__ = 'lepik'
 import xlwt3 as xlwt
 import os
 import calc_week
-import get_db_data
+import db_connect
+import sql_queries
 xlLeft, xlRight, xlCenter = -4131, -4152, -4108
 
 
-def generate_empty_tables(n_week=calc_week.get_n_week(), week=calc_week.get_week(), con=get_db_data.db_connect()['con'],
-                          group_name=get_db_data.db_connect()['group_name'], course=get_db_data.db_connect()['course'],
-                          spec_name=get_db_data.db_connect()['spec_name'], stud_day_num=5):
+def generate_empty_tables(n_week=calc_week.get_n_week(), week=calc_week.get_week(), con=db_connect.connect(),
+                          group_name=sql_queries.groups_query()['group_name'],
+                          course=sql_queries.groups_query()['course'],
+                          spec_name=sql_queries.groups_query()['spec_name'], stud_day_num=5):
 							  
     wb = xlwt.Workbook(encoding='cp1251',style_compression=0)
     ws = wb.add_sheet("Тиждень №%i" % n_week, cell_overwrite_ok=False)
@@ -144,5 +146,7 @@ def generate_empty_tables(n_week=calc_week.get_n_week(), week=calc_week.get_week
     wb.save('%s_%s_%s.xls'%(group_name, course, spec_name))
     attachment = ('%s_%s_%s.xls'%(group_name, course, spec_name))
     return attachment
+
+generate_empty_tables()
 
 
