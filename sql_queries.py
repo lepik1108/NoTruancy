@@ -32,7 +32,8 @@ def groups_query(con=db_connect.connect()):
             })
             it += 1
             #print(send_map)
+    con.close()
     return send_map
 
 
-#groups_query()
+groups_query()
