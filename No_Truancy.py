@@ -165,12 +165,12 @@ with con:
         wb.save('%s_%s_%s.xls'%(group_name,course,spec_name))
         attachment = ('%s_%s_%s.xls'%(group_name,course,spec_name))
 
-        fromaddr = 'ОНПУ <%s@gmail.com>'%(m_user)
-        toaddr = 'Старостам групп <%s>'%(elder_mail)
+        from_adr = 'ОНПУ <%s@gmail.com>'%(m_user)
+        to_adr = 'Старостам групп <%s>'%(elder_mail)
         msg = MIMEMultipart()
         msg['Subject'] = 'Журнал посещаемости'
-        msg['From'] = fromaddr
-        msg['To'] = toaddr
+        msg['From'] = from_adr
+        msg['To'] = to_adr
         msg_txt =  MIMEText('''Здрвствуйте, ув.%s, староста группы %s. \n\nЗаполните приложенный файл и пришлите обратно не позднее %s.%s.%s.\n\nС уважением, ОНПУ.
         '''%(elder_name, group_name, date.today().year, date.today().month, (date.today().day+7)), 'plain', 'cp1251')
         msg.preamble = ' '
@@ -182,7 +182,7 @@ with con:
         server.set_debuglevel(1);
         server.starttls()
         server.login(m_user,m_pass)
-        server.sendmail(fromaddr, toaddr, msg.as_string())
+        server.sendmail(from_adr, to_adr, msg.as_string())
         server.quit()
         os.chdir('..')
 

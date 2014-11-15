@@ -2,7 +2,7 @@ __author__ = 'lepik'
 import db_connect
 
 
-def groups_query(con=db_connect.connect()):
+def groups_query(con=db_connect.con):
     with con:
         cur = con.cursor()
         cur.execute('SELECT * FROM groups')  # table groups
@@ -38,8 +38,8 @@ def groups_query(con=db_connect.connect()):
             it += 1
 
         #print (send_map_list)
-    con.close()
-    print ('Connection to database closed')
+    #con.close()
+    #print ('Connection to database closed')
     return send_map_list
 
 
