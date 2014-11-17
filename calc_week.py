@@ -3,7 +3,7 @@ __author__ = 'lepik'
 from datetime import date
 
 first_week = input('Enter date which belongs to first educational '
-                   'week in semester (default: September 1st of current year):')
+                   'week in semester (default: September 1st of current year (2014-09-01)):')
 if first_week == '':
     first_week = date(date.today().year,9,1).strftime("%U")
 week_in_semester = input('Enter number of educational weeks in semester (default: 18):')

@@ -6,41 +6,56 @@ def groups_query(con=db_connect.con):
     with con:
         cur = con.cursor()
         cur.execute('SELECT * FROM groups')  # table groups
-        rows = cur.fetchall()
         it = 1
-        # send_map = {
-        #     '№': '',
-        #     'group_name': '',
-        #     'course': '',
-        #     'spec_name': '',
-        #     'elder_name': '',
-        #     'elder_mail': '',
-        # }
-        send_map_list = []
+        groups_query__send_list = []
+        rows = cur.fetchall()
         for row in rows:
-            group_name = (row[0])
-            course = (row[1])
-            spec_name = (row[2])
-            elder_name = (row[3])
-            elder_mail = (row[4])
+            groups__group_name = (row[0])
+            groups__course = (row[1])
+            groups__spec_name = (row[2])
+            groups__elder_name = (row[3])
+            groups__elder_mail = (row[4])
 
-            send_map=({
+            groups_query__send_map = ({
                 '№': it,
-                'group_name': group_name,
-                'course': course,
-                'spec_name': spec_name,
-                'elder_name': elder_name,
-                'elder_mail': elder_mail,
+                'group_name': groups__group_name,
+                'course': groups__course,
+                'spec_name': groups__spec_name,
+                'elder_name': groups__elder_name,
+                'elder_mail': groups__elder_mail,
             })
+            groups_query__send_list.append(groups_query__send_map)
 
-            send_map_list.append(send_map)
-            #print (send_map)
             it += 1
-
-        #print (send_map_list)
-    #con.close()
-    #print ('Connection to database closed')
-    return send_map_list
+    return groups_query__send_list
 
 
-groups_query()
+def students_query(group_name, con=db_connect.con):
+    with con:
+        cur_s = con.cursor()
+        cur_s.execute("SELECT fio FROM students WHERE group_name='%s'" % group_name)
+        students_query__send_list = []
+        print('----------------------------------')
+        print(group_name)
+        print('----------------------------------')
+        rows_s = cur_s.fetchall()
+        for row_s in rows_s:
+            print(row_s[0])
+
+            students_query__send_map = ({
+                'student_fio': row_s[0],
+            })
+            students_query__send_list.append(students_query__send_map)
+
+    print('----------------------------------')
+    print('\n')
+    return students_query__send_list
+
+# for sql_line in (groups_query()):
+#     group_name = sql_line['group_name']
+#     print(group_name)
+#     #students_query(group_name)
+#     print('----------------')
+#     print(students_query(group_name))
+#     print('----------------')
+#     print('----------------')
