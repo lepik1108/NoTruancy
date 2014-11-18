@@ -26,14 +26,13 @@ def send():
         msg['Subject'] = 'Журнал посещаемости'
         msg['From'] = from_adr
         msg['To'] = to_adr
-        msg_txt = MIMEText('''Здрвствуйте, ув. %s, староста группы %s.
+        msg_txt = MIMEText(u'''Здрвствуйте, ув. %s, староста группы %s.
         \n\nЗаполните приложенный файл и пришлите
         обратно не позднее %s.%s.%s.\n\nС уважением, ОНПУ.''' % (elder_name,
                                                                  group_name,
                                                                  date.today().year,
                                                                  date.today().month,
-                                                                 (date.today().day + 7)),
-                           'plain', 'cp1251')
+                                                                 (date.today().day + 7)), 'plain', 'utf-8')
         msg.preamble = ' '
         attach = MIMEApplication(open(attachment, 'rb').read())
         attach.add_header('Content-Disposition', 'attachment', filename=('%s_%s_%s.xls' % (group_name, course, spec_name)))

@@ -50,12 +50,3 @@ def students_query(group_name, con=db_connect.con):
     print('----------------------------------')
     print('\n')
     return students_query__send_list
-
-# for sql_line in (groups_query()):
-#     group_name = sql_line['group_name']
-#     print(group_name)
-#     #students_query(group_name)
-#     print('----------------')
-#     print(students_query(group_name))
-#     print('----------------')
-#     print('----------------')

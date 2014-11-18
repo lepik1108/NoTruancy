@@ -17,7 +17,7 @@ import os
 m_user = 'gevandrova.yana' #gmail login
 m_pass = 'gevandrova' #gmail password
 
-russian = 'windows-1251'
+#russian = 'windows-1251'
 
 xlLeft, xlRight, xlCenter = -4131, -4152, -4108
 
@@ -172,7 +172,7 @@ with con:
         msg['From'] = from_adr
         msg['To'] = to_adr
         msg_txt =  MIMEText('''Здрвствуйте, ув.%s, староста группы %s. \n\nЗаполните приложенный файл и пришлите обратно не позднее %s.%s.%s.\n\nС уважением, ОНПУ.
-        '''%(elder_name, group_name, date.today().year, date.today().month, (date.today().day+7)), 'plain', 'cp1251')
+        '''%(elder_name, group_name, date.today().year, date.today().month, (date.today().day+7)), 'plain', 'utf-8')
         msg.preamble = ' '
         attach = MIMEApplication(open(attachment, 'rb').read())
         attach.add_header('Content-Disposition', 'attachment', filename=attachment)
