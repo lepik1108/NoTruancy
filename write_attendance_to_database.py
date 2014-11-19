@@ -1,21 +1,32 @@
 __author__ = 'lepik'
 import xlrd
-workbook = xlrd.open_workbook('./XLS_Received_from_elders/ВБ-081м_6_8.17010201 Системи технічного захисту інформації, автоматизація її обробки.xls')
-worksheet = workbook.sheet_by_name('Тиждень №11')
-print ('rows=', worksheet.nrows)
-print('cols=', worksheet.nrows)
-num_rows = worksheet.nrows - 1
-num_cells = worksheet.ncols - 1
-curr_row = -1
-while curr_row < num_rows:
-	curr_row += 1
-	row = worksheet.row(curr_row)
-	print ('Row:', curr_row)
-	curr_cell = -1
-	while curr_cell < num_cells:
-		curr_cell += 1
-		# Cell Types: 0=Empty, 1=Text, 2=Number, 3=Date, 4=Boolean, 5=Error, 6=Blank
-		cell_type = worksheet.cell_type(curr_row, curr_cell)
-		cell_value = worksheet.cell_value(curr_row, curr_cell)
-		print ('	', cell_type, ':', cell_value)
 
+
+def read_xls(filename, send_map):
+    l = []
+    workbook = xlrd.open_workbook(filename)
+    worksheet = workbook.sheet_by_name('Тиждень №11')
+
+    num_rows = worksheet.nrows - 1
+    curr_row = -1
+    while curr_row < num_rows:
+        curr_row += 1
+        row = worksheet.row(curr_row)
+        l.append(row)
+        print (row)
+    #print('\n', l)
+    week = str(l[0][0])[6:-1]
+
+        # send_map = ({
+        #         'Тиждень №': it,
+        #         'group_name': groups__group_name,
+        #         'course': groups__course,
+        #         'spec_name': groups__spec_name,
+        #         'elder_name': groups__elder_name,
+        #         'elder_mail': groups__elder_mail,
+        #     })
+
+fn = './XLS_Received_from_elders/ВБ-081м_6_8.17010201 Системи технічного захисту ' \
+     'інформації, автоматизація її обробки.xls'
+sm = []
+read_xls(fn, sm)

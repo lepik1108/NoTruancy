@@ -14,7 +14,7 @@ def extract_body(payload):
         return '\n'.join([extract_body(part.get_payload()) for part in payload])
 
 conn = imaplib.IMAP4_SSL("imap.gmail.com", 993)
-conn.login("testxstar@gmail.com", "vdblnsgdjllamdxb")
+conn.login(m_user, m_pass)
 conn.select()
 typ, data = conn.search(None, 'UNSEEN')
 print('Unseen messages: ', len(data[0].split()))
