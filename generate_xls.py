@@ -115,4 +115,3 @@ def generate_empty_tables(n_week=calc_week.get_n_week(), week=calc_week.get_week
     [print(f) for f in file_list]
     print('Ready to send')
     return file_list
-
