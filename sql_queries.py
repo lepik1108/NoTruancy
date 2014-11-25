@@ -78,6 +78,7 @@ def attendance_query(data, con=db_connect.con, semester_num='1'):
                              'Empty',
                              'Empty'))
         else:
+            # cur.execute("SELECT * FROM semester%s_attendance WHERE week" % (semester_num, data[0]['неделя'))
             print('Data already exists. Updating...', )
             for i in range(len(data)):
                 cur.execute("UPDATE semester%s_attendance SET week=?, fio=?, group_name=?, number=?, attendance_list=?,"
