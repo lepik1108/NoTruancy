@@ -1,4 +1,3 @@
-__author__ = 'lepik'
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication

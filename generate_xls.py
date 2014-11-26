@@ -1,4 +1,3 @@
-__author__ = 'lepik'
 import xlwt3 as xlwt
 import os
 

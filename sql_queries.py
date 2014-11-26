@@ -1,4 +1,3 @@
-__author__ = 'lepik'
 import db_connect
 
 

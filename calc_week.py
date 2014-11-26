@@ -1,4 +1,3 @@
-__author__ = 'lepik'
 import time
 from datetime import date
 

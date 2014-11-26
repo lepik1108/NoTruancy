@@ -1,4 +1,3 @@
-__author__ = 'lepik'
 import xlrd
 import os
 

@@ -1,4 +1,3 @@
-__author__ = 'lepik'
 import sqlite3 as lite
 
 db_name = 'main.db'
